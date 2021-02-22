@@ -5,29 +5,29 @@
  * @format
  * @flow strict-local
  */
-
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
 import React, { Component } from 'react';
 import { 
   View,
   Text,
 } from 'react-native';
-import SignOrSignUp from './components/registration/SignOrSignUp'
+import SignInOrSignUp from './components/registration/SignInOrSignUp'
+import SignIn from './components/registration/SignIn'
 
+
+const AuthStack = createStackNavigator();
 class App extends Component {
   state = { loggedIn: false }
 
   render() {
-    if(this.state.loggedIn){
-      return (
-        <View>
-          <Text>
-            You're logged in!
-          </Text>
-        </View>
-      )
-    }
-    return (
-      <SignOrSignUp />
+    return(
+      <NavigationContainer>
+        <AuthStack.Navigator>
+          <AuthStack.Screen name ="Registration" component={SignInOrSignUp} />
+          <AuthStack.Screen name ="Sign In" component={SignIn} />
+        </AuthStack.Navigator>
+      </NavigationContainer>
     )
   }
 }

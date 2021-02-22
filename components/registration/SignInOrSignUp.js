@@ -1,18 +1,19 @@
 import React, { Component } from 'react';
 import {
   View,
-  TextInput,
+  Text,
   Button,
   StyleSheet,
   Alert,
   SafeAreaView,
 } from 'react-native';
+import SignIn from './SignIn';
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: "center",
-    alignItems: "center",
+    alignItems: "center"
   },
   separator: {
     marginVertical: 8,
@@ -24,29 +25,27 @@ const styles = StyleSheet.create({
 const Seperator = () => (
   <View style={styles.separator} />
 )
-class SignIn extends Component {
+
+class SignInOrSignUp extends Component {
+  signIn() {
+    return(
+      <SignIn />
+    )
+  }
   render () {
     return (
       <SafeAreaView style={styles.container}>
         <View>
-          <TextInput
-            autoCompleteType='email'
-            placeholder='Email'
-            editable
-            maxLength={40}
+          <Button 
+            title="Sign In"
+            onPress={() => { this.props.navigation.push('Sign In') }} 
           />
           <Seperator />
-          <TextInput
-            placeholder='Password'
-            secureTextEntry={true}
-            editable
-            maxLength={40}
-          />
-          <Button title="Sign In"/>
+          <Button title="Create Account"/>
         </View>
       </SafeAreaView>
     );
   }
 }
 
-export default SignIn;
+export default SignInOrSignUp;

@@ -14,6 +14,7 @@ import {
 } from 'react-native';
 import SignInOrSignUp from './components/registration/SignInOrSignUp'
 import SignIn from './components/registration/SignIn'
+import SignUp from './components/registration/SignUp'
 
 
 const AuthStack = createStackNavigator();
@@ -26,6 +27,7 @@ class App extends Component {
         <AuthStack.Navigator>
           <AuthStack.Screen name ="Registration" component={SignInOrSignUp} />
           <AuthStack.Screen name ="Sign In" component={SignIn} />
+          <AuthStack.Screen name ="Sign Up" component={SignUp} />
         </AuthStack.Navigator>
       </NavigationContainer>
     )

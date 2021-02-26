@@ -1,21 +1,30 @@
 const rootPathToTweeter = () => {
-  return('localhost:3000/')
+  return('http://10.0.2.2:3000/');
 } 
 
 export const createUser = async (user) => {
-  let createUserPath = rootPathToTweeter() + 'users'
+  const createUserPath = rootPathToTweeter() + 'users'
 
-  let x = await fetch('http://localhost:3000/users', {
+  await fetch(createUserPath, {
     method: 'POST',
     headers: {
       Accept: 'application/json',
       'Content-Type': 'application/json'
     },
     body: JSON.stringify({
-      firstParam: 'yourValue',
-      secondParam: 'yourOtherValue'
+      user: {
+        username: user.username,
+        email: user.email,
+        password: user.password,
+        password_confirmation: user.passwordConfirmation,
+      }
     })
-  }).then((response) => console.log(response))
-  console.log(x);
-  return x;
+  })
+  .then(response => response.json())
+  .then(data => {
+    console.log('Success:', data);
+  })
+  .catch((error) => {
+    console.error('Error:', error);
+  });
 }

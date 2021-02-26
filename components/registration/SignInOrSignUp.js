@@ -41,7 +41,10 @@ class SignInOrSignUp extends Component {
             onPress={() => { this.props.navigation.push('Sign In') }} 
           />
           <Seperator />
-          <Button title="Create Account"/>
+          <Button 
+            title="Create Account"
+            onPress={() => { this.props.navigation.push('Sign Up') }} 
+          />
         </View>
       </SafeAreaView>
     );
